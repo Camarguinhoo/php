@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Aula GET</title>
+</head>
+<script>
+    function mascara(valor){
+        var valorAlterado = valor.value;
+        valorAlterado = valorAlterado.replace(/\D/g, ""); //Remove todos os nao digitos
+        valorAlterado = valorAlterado.replace(/(\d+)(\d{2})$/, "$1, $2"); //Adiciona a parte dos centavos
+        valorAlterado = valorAlterado.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1."); // Adiciona pontos ao valor digitado
+        valorAlterado = "R$" + valorAlterado;
+        valor.value = valorAlterado;
+    }
+</script>
+<body>
+    <header>
+        <div class="container">
+        <h1>Informe seus dados</h1>
+        <section>
+            <form action="aula8.php" method="post">
+                <label for="nome">Nome:</label>
+                <input type="text" placeholder="Digite seu nome" name="nome" id="idnome" required><br><br>
+
+                <label for="email">Email:</label>
+                <input type="text" placeholder="Digite seu email" name="email" id="idemail"><br><br>
+
+                <label for="assunto">Assunto</label>
+                <textarea placeholder="Digite o assunto" name="assunto" id="idassunto"></textarea><br><br>
+
+                <label for="valorcusto">Valor custo</label>
+                <input type="text" placeholder="Valor custo" name="valorcusto" id="idvalorcusto" onkeyup="mascara(this)"><br><br>
+
+                <label for="valorvenda">Valor venda</label>
+                <input type="text" placeholder="Valor venda" name="valorvenda" id="idvalorvenda" onkeyup="mascara(this)"><br><br>
+
+                <label for="conteudo">Conteudo</label>
+                <textarea placeholder="Conteudo" name="conteudo" id="idconteudo"></textarea><br><br>
+                <input type="submit" value="Enviar" name="enviarMsg">
+                <input type="reset" value="Apagar">
+                
+            </form>
+        </section>
+    </div>
+    </header>
+    
+</body>
+</html>
